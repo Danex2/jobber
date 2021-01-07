@@ -2,7 +2,7 @@ import { Box, Stack, Text } from "@chakra-ui/react";
 
 export default function Footer() {
   return (
-    <Box as="footer" bg="black" color="white" py={50}>
+    <Box as="footer" bg="black" py={50} color="#FFFAFA">
       <Stack
         direction="row"
         display="flex"

@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 type LayoutProps = {
   title: string;
-  children: React.ReactChild;
+  children: React.ReactNode;
 };
 
 export default function Layout({ title, children }: LayoutProps) {
