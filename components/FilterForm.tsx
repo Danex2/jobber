@@ -2,7 +2,7 @@ import { Box, Button, Input, Select, Stack } from "@chakra-ui/react";
 
 export default function FilterForm() {
   return (
-    <Box as="form" maxW="2xl" mx="auto" pt={140} px={5}>
+    <Box as="form" maxW="2xl" mx="auto" pt={100} px={5}>
       <Input
         type="text"
         mb={10}
