@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Box, Stack, Text, Link } from "@chakra-ui/react";
 
 export default function Footer() {
   return (
@@ -12,9 +12,12 @@ export default function Footer() {
         textTransform="uppercase"
         fontSize="xs"
       >
-        <Text>Twitter</Text>
-        <Text>Github</Text>
-        <Text>Contact</Text>
+        <Link href="https://twitter.com/hybridearth" isExternal>
+          Twitter
+        </Link>
+        <Link href="https://github.com/Danex2/jobber" isExternal>
+          Github
+        </Link>
       </Stack>
     </Box>
   );

@@ -1,66 +1,35 @@
 import Layout from "@/components/Layout";
 import SearchListContainer from "@/components/SearchListContainer";
-import { request } from "graphql-request";
 import FilterForm from "@/components/FilterForm";
-import useSWR from "swr";
+import { useSWRInfinite } from "swr";
+import { useState } from "react";
 
-const fetcher = (query) => request("https://api.graphql.jobs", query);
+const getKey = (pageIndex, previousPageData) => {
+  if (previousPageData && !previousPageData.length) return null; // reached the end
+  return `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?page=${pageIndex}`; // SWR key
+};
 
-export default function Home({ jobs }) {
-  const { data, error } = useSWR(
-    `{
-        jobs {
-          id
-          title
-          slug
-          description
-          postedAt
-          locationNames
-          commitment {
-            title
-          }
-          company {
-            name
-          }
-        }
-  }`,
-    fetcher,
-    {
-      initialData: jobs,
-    }
-  );
+const fetcher = (args) => fetch(args).then((res) => res.json());
+
+export default function Home() {
+  const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
+  const [order, setOrder] = useState("newest");
+  const [type, setType] = useState("Full Time");
+  const [text, setText] = useState("");
+
+  console.log(data);
 
   return (
     <Layout title="Home">
-      <FilterForm />
-      <SearchListContainer jobs={data} />
+      <FilterForm setOrder={setOrder} setType={setType} setText={setText} />
+      <SearchListContainer
+        jobArrayChunks={data}
+        size={size}
+        setSize={setSize}
+        order={order}
+        type={type}
+        searchText={text}
+      />
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const jobs = await request(
-    "https://api.graphql.jobs",
-    `{
-        jobs {
-          id
-          title
-          slug
-          description
-          postedAt
-          locationNames
-          commitment {
-            title
-          }
-          company {
-            name
-          }
-        }
-  }`
-  );
-  return {
-    props: {
-      jobs,
-    },
-  };
 }

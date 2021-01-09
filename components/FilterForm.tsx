@@ -1,38 +1,43 @@
 import { Box, Button, Input, Select, Stack } from "@chakra-ui/react";
 
-export default function FilterForm() {
+type FilterFormProps = {
+  setOrder(order: any);
+  setType(type: any);
+  setText(input: any);
+};
+
+export default function FilterForm({
+  setOrder,
+  setType,
+  setText,
+}: FilterFormProps) {
   return (
     <Box as="form" maxW="2xl" mx="auto" pt={100} px={5}>
       <Input
         type="text"
         mb={10}
         style={{ background: "#FFFAFA" }}
-        placeholder="Search for your next role"
+        placeholder="Search listings"
+        onChange={(e) => setText(e.target.value)}
       />
       <Stack direction="row" spacing={10}>
-        <Select placeholder="Today" w={1 / 3} style={{ background: "#FFFAFA" }}>
-          <option value="this-week">This week</option>
-          <option value="this-month">This month</option>
+        <Select
+          w={1 / 2}
+          style={{ background: "#FFFAFA" }}
+          onChange={(e) => setOrder(e.target.value)}
+        >
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
         </Select>
         <Select
-          placeholder="Full-time"
-          w={1 / 3}
+          w={1 / 2}
           style={{ background: "#FFFAFA" }}
+          onChange={(e) => setType(e.target.value)}
         >
-          <option value="part-time">Part-time</option>
-          <option value="contract">Contract</option>
+          <option value="Full Time">Full-time</option>
+          <option value="Part Time">Part-time</option>
+          <option value="Contract">Contract</option>
         </Select>
-        <Button
-          type="submit"
-          w={1 / 3}
-          bg="black"
-          color="#FFFAFA"
-          _hover={{
-            bg: "gray.700",
-          }}
-        >
-          Search
-        </Button>
       </Stack>
     </Box>
   );
