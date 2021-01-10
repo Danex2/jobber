@@ -19,12 +19,14 @@ export default function FilterForm({
         style={{ background: "#FFFAFA" }}
         placeholder="Search listings"
         onChange={(e) => setText(e.target.value)}
+        data-cy="listings-input"
       />
       <Stack direction="row" spacing={10}>
         <Select
           w={1 / 2}
           style={{ background: "#FFFAFA" }}
           onChange={(e) => setOrder(e.target.value)}
+          data-cy="date-select"
         >
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
@@ -33,6 +35,7 @@ export default function FilterForm({
           w={1 / 2}
           style={{ background: "#FFFAFA" }}
           onChange={(e) => setType(e.target.value)}
+          data-cy="type-select"
         >
           <option value="Full Time">Full-time</option>
           <option value="Part Time">Part-time</option>

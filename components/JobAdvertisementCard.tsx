@@ -34,7 +34,7 @@ export default function JobAdvertisementCard({ job }: JobProps) {
         justifyContent="space-between"
         flexDirection="column"
       >
-        <Text fontWeight="bold" fontSize="2xl">
+        <Text fontWeight="bold" fontSize="2xl" data-cy="job-name">
           {job.company}
         </Text>
         <Text fontSize="sm" fontWeight="semibold">

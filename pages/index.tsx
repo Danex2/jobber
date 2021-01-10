@@ -17,8 +17,6 @@ export default function Home() {
   const [type, setType] = useState("Full Time");
   const [text, setText] = useState("");
 
-  console.log(data);
-
   return (
     <Layout title="Home">
       <FilterForm setOrder={setOrder} setType={setType} setText={setText} />
