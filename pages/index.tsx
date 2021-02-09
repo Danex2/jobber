@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const getKey = (pageIndex, previousPageData) => {
   if (previousPageData && !previousPageData.length) return null; // reached the end
-  return `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?page=${pageIndex}`; // SWR key
+  return `/api/positions/${pageIndex}`; // SWR key
 };
 
 const fetcher = (args) => fetch(args).then((res) => res.json());
