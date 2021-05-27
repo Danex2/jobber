@@ -15,7 +15,7 @@ export default function Footer() {
         <Link href="https://twitter.com/hybridearth" isExternal>
           Twitter
         </Link>
-        <Link href="https://github.com/Danex2/jobber" isExternal>
+        <Link href="https://github.com/nulfrost/jobber" isExternal>
           Github
         </Link>
       </Stack>
